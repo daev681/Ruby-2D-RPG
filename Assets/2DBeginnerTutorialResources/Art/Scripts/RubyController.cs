@@ -1,18 +1,22 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public float speed = 3.0f;
 
     public int maxHealth = 5;
+
+    public int health { get { return currentHealth; } }
     int currentHealth;
 
     Rigidbody2D rigidbody2d;
 
-    // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+
         currentHealth = maxHealth;
     }
 
@@ -29,9 +33,9 @@ public class RubyController : MonoBehaviour
         rigidbody2d.MovePosition(position);
     }
 
-    void ChangeHealth(int amount)
+    public void ChangeHealth(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log(currentHealth + ¡°/¡± +maxHealth);
+        Debug.Log(currentHealth + "/" + maxHealth);
     }
 }
