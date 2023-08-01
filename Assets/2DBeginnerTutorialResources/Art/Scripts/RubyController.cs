@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class RubyController : MonoBehaviour
 {
-    public float speed = 9.0f;
+    public float speed = 3.0f;
 
     public int maxHealth = 5;
+    public float timeInvincible = 2.0f;
 
     public int health { get { return currentHealth; } }
     int currentHealth;
-
-    public float timeInvincible = 2.0f;
     bool isInvincible;
     float invincibleTimer;
 
-
     Rigidbody2D rigidbody2d;
 
+    // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -57,6 +56,7 @@ public class RubyController : MonoBehaviour
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+
         Debug.Log(currentHealth + "/" + maxHealth);
     }
 }
